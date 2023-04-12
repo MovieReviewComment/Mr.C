@@ -4,7 +4,7 @@
     "description": "API service for reviewing and commenting on movies",
     "main": "index.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "build": "rimraf ./build && tsc"
     },
     "repository": {
         "type": "git",
