@@ -4,7 +4,8 @@
     "description": "API service for reviewing and commenting on movies",
     "main": "index.js",
     "scripts": {
-        "build": "rimraf ./build && tsc"
+        "build": "rimraf ./build && tsc",
+        "start": "npm run build && node build/index.js"
     },
     "repository": {
         "type": "git",
