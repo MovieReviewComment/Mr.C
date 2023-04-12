@@ -11,5 +11,8 @@
         "url": "https://github.com/MovieReviewComment/Mr.C/api"
     },
     "author": "skgndi12",
-    "license": "MIT"
+    "license": "MIT",
+    "devDependencies": {
+        "typescript": "^5.0.4"
+    }
 }
