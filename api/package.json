@@ -7,7 +7,7 @@
         "lint": "eslint . --ext .ts",
         "prettier-format": "prettier --config .prettierrc 'src/**/*.ts' --write",
         "build": "rimraf ./build && tsc",
-        "start": "npm run build && node build/index.js",
+        "start": "npm run build && node build/main.js",
         "start:dev": "npx nodemon"
     },
     "repository": {
@@ -33,6 +33,6 @@
         ],
         "ext": ".ts,.js",
         "ignore": [],
-        "exec": "npx ts-node ./src/index.ts"
+        "exec": "npx ts-node ./src/main.ts"
     }
 }
