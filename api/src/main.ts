@@ -1,13 +1,12 @@
 import { load } from './config/loader';
 
 function main() {
-  const configPath = './src/config/default.yaml';
   try {
-    const config = load(configPath);
+    const config = load();
     console.log(config);
   } catch (e) {
     if (e instanceof Error) {
-      console.error(`error: ${e.message}`);
+      console.error(`${e.message}`);
     }
   }
 }

@@ -1,9 +1,6 @@
-import convict from 'convict';
-import convict_format_with_validator from 'convict-format-with-validator';
-import { config as envLoad } from 'dotenv';
-import * as yaml from 'js-yaml';
+import config from 'config';
 
-interface ServerConfig {
+interface Config {
   env: string;
   http: HttpConfig;
 }
@@ -13,18 +10,13 @@ interface HttpConfig {
   port: number;
 }
 
-export function load(path: string): Config {
+export function load(): Config {
   try {
-    envLoad();
-    const config = jsYaml.load(readFileSync(path, 'utf-8')) as Config;
     return {
-      env: process.env.ENV ? process.env.ENV : config.env,
-      server: {
-        host: process.env.HOST ? process.env.HOST : config.server.host,
-        port: process.env.PORT ? process.env.PORT : config.server.port
-      }
+      env: config.util.getEnv('NODE_ENV'),
+      http: config.get<HttpConfig>('http')
     };
   } catch (e) {
-    throw new Error('failed to load config');
+    throw new Error(`failed to load config error: ${e}`);
   }
 }
