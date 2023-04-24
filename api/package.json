@@ -5,8 +5,8 @@
     "main": "/src/main.ts",
     "scripts": {
         "lint": "eslint . --ext .ts",
-        "prettier-format": "prettier --config .prettierrc 'src/**/*.ts' --write",
-        "build": "rimraf ./build && tsc",
+        "format": "prettier --config .prettierrc 'src/**/*.ts' 'test/**/*.ts' --write",
+        "build": "rimraf ./build && tsc --project tsconfig.prod.json",
         "start": "npx ts-node src/main.ts",
         "start:dev": "npx nodemon",
         "test": "jest",
