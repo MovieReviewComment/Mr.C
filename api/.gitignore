@@ -3,3 +3,6 @@
 
 # Package
 /node_modules
+
+# Tests
+/coverage
