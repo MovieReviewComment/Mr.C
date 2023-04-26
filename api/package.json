@@ -6,8 +6,8 @@
     "scripts": {
         "lint": "eslint . --ext .ts",
         "format": "prettier --config .prettierrc 'src/**/*.ts' 'test/**/*.ts' --write",
-        "build": "rimraf ./build && tsc --project tsconfig.prod.json",
-        "start": "npx ts-node src/main.ts",
+        "build": "rimraf ./build && tsc --project tsconfig.prod.json && tsc-alias --project tsconfig.json",
+        "start": "npx ts-node -r tsconfig-paths/register src/main.ts",
         "start:dev": "npx nodemon",
         "test": "jest",
         "test:cov": "jest --coverage --coverageDirectory='coverage'"
@@ -48,11 +48,15 @@
         ],
         "ext": ".ts,.js",
         "ignore": [],
-        "exec": "npx ts-node ./src/main.ts"
+        "exec": "npx ts-node -r tsconfig-paths/register ./src/main.ts"
     },
     "jest": {
         "transform": {
             "^.+\\.tsx?$": "ts-jest"
+        },
+        "rootDir": ".",
+        "moduleNameMapper": {
+            "^@src(.*)$": "<rootDir>/src/$1"
         },
         "testRegex": "(/test/)(.*\\.(test))\\.(tsx?)$",
         "moduleFileExtensions": [
