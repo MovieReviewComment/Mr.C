@@ -13,7 +13,7 @@ interface HttpConfig {
 export function load(): Config {
   try {
     return {
-      env: config.util.getEnv('NODE_ENV'),
+      env: config.get<string>('env'),
       http: config.get<HttpConfig>('http')
     };
   } catch (e) {
