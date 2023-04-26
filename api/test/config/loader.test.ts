@@ -1,4 +1,4 @@
-import { load } from '../../src/config/loader';
+import { load } from '@src/config/loader';
 import config from 'config';
 
 describe('Test config loader', () => {
