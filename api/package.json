@@ -10,7 +10,7 @@
         "start": "npx ts-node src/main.ts",
         "start:dev": "npx nodemon",
         "test": "jest",
-        "test:cov": "jest --coverage"
+        "test:cov": "jest --coverage --coverageDirectory='coverage'"
     },
     "repository": {
         "type": "git",
@@ -47,5 +47,19 @@
         "ext": ".ts,.js",
         "ignore": [],
         "exec": "npx ts-node ./src/main.ts"
+    },
+    "jest": {
+        "transform": {
+            "^.+\\.tsx?$": "ts-jest"
+        },
+        "testRegex": "(/test/)(.*\\.(test))\\.(tsx?)$",
+        "moduleFileExtensions": [
+            "ts",
+            "tsx",
+            "js",
+            "jsx",
+            "json",
+            "node"
+        ]
     }
 }
