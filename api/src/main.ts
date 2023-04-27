@@ -1,4 +1,4 @@
-import { load } from './config/loader';
+import { load } from '@src/config/loader';
 
 function main() {
   try {

@@ -6,11 +6,11 @@
     "scripts": {
         "lint": "eslint . --ext .ts",
         "format": "prettier --config .prettierrc 'src/**/*.ts' 'test/**/*.ts' --write",
-        "build": "rimraf ./build && tsc --project tsconfig.prod.json",
-        "start": "npx ts-node src/main.ts",
+        "build": "rimraf ./build && tsc --project tsconfig.prod.json && tsc-alias --project tsconfig.json",
+        "start": "npx ts-node -r tsconfig-paths/register src/main.ts",
         "start:dev": "npx nodemon",
         "test": "jest",
-        "test:cov": "jest --coverage"
+        "test:cov": "jest --coverage --coverageDirectory='coverage'"
     },
     "repository": {
         "type": "git",
@@ -38,6 +38,8 @@
         "config": "^3.3.9",
         "js-yaml": "^4.1.0",
         "rimraf": "^5.0.0",
+        "tsc-alias": "^1.8.5",
+        "tsconfig-paths": "^4.2.0",
         "typescript": "^5.0.4"
     },
     "nodemonConfig": {
@@ -46,6 +48,24 @@
         ],
         "ext": ".ts,.js",
         "ignore": [],
-        "exec": "npx ts-node ./src/main.ts"
+        "exec": "npx ts-node -r tsconfig-paths/register ./src/main.ts"
+    },
+    "jest": {
+        "transform": {
+            "^.+\\.tsx?$": "ts-jest"
+        },
+        "rootDir": ".",
+        "moduleNameMapper": {
+            "^@src(.*)$": "<rootDir>/src/$1"
+        },
+        "testRegex": "(/test/)(.*\\.(test))\\.(tsx?)$",
+        "moduleFileExtensions": [
+            "ts",
+            "tsx",
+            "js",
+            "jsx",
+            "json",
+            "node"
+        ]
     }
 }
