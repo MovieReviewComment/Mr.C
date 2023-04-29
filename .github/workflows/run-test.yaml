@@ -10,7 +10,7 @@ on:
 jobs:
   api-test:
     if: contains(github.event.pull_request.labels.*.name, 'api')
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
       - name: Read .nvmrc
