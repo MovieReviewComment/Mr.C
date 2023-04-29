@@ -1,10 +1,5 @@
-# Linked issue
+Resolves {issue}
 
-* 
+# Changes
 
-# Description about change
-
-* 
-
----
-
+- Content
