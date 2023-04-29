@@ -1,0 +1,23 @@
+{
+  "include": ["src/**/*.ts", "test/**/*.test.ts"],
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": [
+      "ES2022"
+    ],
+    "module": "commonjs",
+    "allowJs": true,
+    "outDir": "build",
+    "rootDir": ".",
+    "baseUrl": ".",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "paths": {
+      "@src/*": ["src/*"],
+    }
+  }
+}

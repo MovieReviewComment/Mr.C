@@ -1,0 +1,8 @@
+# Compiled output
+/build
+
+# Package
+/node_modules
+
+# Tests
+/coverage
