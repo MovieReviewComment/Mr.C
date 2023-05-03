@@ -40,7 +40,8 @@
         "rimraf": "^5.0.0",
         "tsc-alias": "^1.8.5",
         "tsconfig-paths": "^4.2.0",
-        "typescript": "^5.0.4"
+        "typescript": "^5.0.4",
+        "winston": "^3.8.2"
     },
     "nodemonConfig": {
         "watch": [
