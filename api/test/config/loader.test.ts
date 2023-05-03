@@ -1,4 +1,4 @@
-import { configLoad } from '@src/config/loader';
+import { configLoad, buildLoggerConfig } from '@src/config/loader';
 import config from 'config';
 
 describe('Test config loader', () => {
@@ -6,7 +6,7 @@ describe('Test config loader', () => {
     expect(configLoad()).toStrictEqual({
       env: 'test',
       http: { host: '127.0.0.1', port: 10100 },
-      logger: { deployment: 'test', level: 'silly', format: 'text' }
+      logger: { level: 'silly', format: 'text' }
     });
   });
 
@@ -23,5 +23,15 @@ describe('Test config loader', () => {
     expect(() => {
       configLoad();
     }).toThrow();
+  });
+});
+
+describe('Test build logger config', () => {
+  it('should build valid logger config from a test.yaml', () => {
+    expect(buildLoggerConfig(configLoad())).toStrictEqual({
+      deployment: 'test',
+      level: 'silly',
+      format: 'text'
+    });
   });
 });
