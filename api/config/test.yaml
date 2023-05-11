@@ -2,3 +2,6 @@ env: 'test'
 http:
   host: '127.0.0.1'
   port: 10100
+logger: 
+  level: 'silly' # Log only if less than or equal to this level
+  format: 'text'

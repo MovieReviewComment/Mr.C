@@ -1,14 +1,17 @@
-import { load } from '@src/config/loader';
+import { configLoad, buildLoggerConfig } from '@src/config/loader';
+import { loggerInitialize } from '@src/logger/logger';
 
 function main() {
+  let config;
   try {
-    const config = load();
-    console.log(config);
+    config = configLoad();
   } catch (e) {
-    if (e instanceof Error) {
-      console.error(`${e.message}`);
-    }
+    console.error(`${e}`);
+    process.exit(1);
   }
+
+  const logger = loggerInitialize(buildLoggerConfig(config));
+  logger.info('Hello World!');
 }
 
 if (require.main === module) {
