@@ -1,6 +1,7 @@
+import config from 'config';
+
 import { Config, ConfigHttp, ConfigLogger } from '@src/config/types';
 import { LoggerConfig } from '@src/logger/types';
-import config from 'config';
 
 export function configLoad(): Config {
   try {
