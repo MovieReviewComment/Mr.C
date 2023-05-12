@@ -1,4 +1,4 @@
-import { LogLevel, LogFormat } from '@src/logger/types';
+import { LogFormat, LogLevel } from '@src/logger/types';
 
 export interface Config {
   env: string;

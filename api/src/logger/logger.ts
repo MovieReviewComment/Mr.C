@@ -1,11 +1,12 @@
-import { LoggerConfig, LogFormat } from '@src/logger/types';
 import {
-  LoggerOptions,
   Logger,
+  LoggerOptions,
   createLogger,
   format,
   transports
 } from 'winston';
+
+import { LogFormat, LoggerConfig } from '@src/logger/types';
 
 // The available log levels are described in the link below.
 // https://github.com/winstonjs/winston#logging-levels

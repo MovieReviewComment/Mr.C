@@ -1,4 +1,4 @@
-import { configLoad, buildLoggerConfig } from '@src/config/loader';
+import { buildLoggerConfig, configLoad } from '@src/config/loader';
 import { loggerInitialize } from '@src/logger/logger';
 
 function main() {

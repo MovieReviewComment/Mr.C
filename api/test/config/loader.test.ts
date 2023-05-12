@@ -1,5 +1,6 @@
-import { configLoad, buildLoggerConfig } from '@src/config/loader';
 import config from 'config';
+
+import { buildLoggerConfig, configLoad } from '@src/config/loader';
 
 describe('Test config loader', () => {
   it('should load valid configurations from a test.yaml', () => {
