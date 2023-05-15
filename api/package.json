@@ -59,7 +59,8 @@
         },
         "rootDir": ".",
         "moduleNameMapper": {
-            "^@src(.*)$": "<rootDir>/src/$1"
+            "^@src(.*)$": "<rootDir>/src/$1",
+            "^@controller(.*)$": "<rootDir>/src/controller/$1"
         },
         "testRegex": "(/test/)(.*\\.(test))\\.(tsx?)$",
         "moduleFileExtensions": [
