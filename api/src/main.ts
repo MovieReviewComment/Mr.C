@@ -1,7 +1,13 @@
-import { buildLoggerConfig, configLoad } from '@src/config/loader';
+import {
+  buildHttpConfig,
+  buildLoggerConfig,
+  configLoad
+} from '@src/config/loader';
 import { loggerInitialize } from '@src/logger/logger';
 
-function main() {
+import { HttpServer } from '@controller/http/server';
+
+async function main() {
   let config;
   try {
     config = configLoad();
@@ -11,7 +17,10 @@ function main() {
   }
 
   const logger = loggerInitialize(buildLoggerConfig(config));
-  logger.info('Hello World!');
+  const httpServer = new HttpServer(logger, buildHttpConfig(config));
+  await httpServer.start();
+  await httpServer.close();
+  logger.info('Server shutdowned');
 }
 
 if (require.main === module) {
