@@ -19,8 +19,8 @@ async function main() {
   const logger = loggerInitialize(buildLoggerConfig(config));
   const httpServer = new HttpServer(logger, buildHttpConfig(config));
   await httpServer.start();
-  await httpServer.close();
-  logger.info('Server shutdowned');
+  // await httpServer.close();
+  // logger.info('Server shutdowned');
 }
 
 if (require.main === module) {
