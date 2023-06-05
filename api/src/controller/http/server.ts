@@ -1,4 +1,5 @@
 import express from 'express';
+import 'express-async-errors';
 import http from 'http';
 import requestIp from 'request-ip';
 import { Logger } from 'winston';
