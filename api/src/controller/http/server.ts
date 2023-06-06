@@ -1,5 +1,4 @@
 import express from 'express';
-import 'express-async-errors';
 import http from 'http';
 import requestIp from 'request-ip';
 import { Logger } from 'winston';
@@ -25,6 +24,8 @@ export class HttpServer {
       app.use(requestIp.mw());
       app.use(this.middleware.accessLog);
       app.use('/api', this.getRouters());
+      app.use(this.middleware.handleError);
+      app.use(this.middleware.handleNotFoundRoute);
 
       this.server = app.listen(this.config.port, () => {
         this.logger.info(`HTTP server started on ${this.config.port}`);

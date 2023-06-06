@@ -12,11 +12,13 @@ export class DevV1Controller {
     const prefix = '/v1/dev';
 
     router.post(`${prefix}/greeting`, this.greeting);
-    this.logger.info('Hello from dev controller');
     return router;
   }
 
-  private greeting = (req: GreetingV1Request, res: GreetingV1Response) => {
+  private greeting = async (
+    req: GreetingV1Request,
+    res: GreetingV1Response
+  ) => {
     res.send({ message: 'Hello World!' });
   };
 }
