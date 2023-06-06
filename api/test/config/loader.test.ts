@@ -11,7 +11,7 @@ describe('Test config loader', () => {
     expect(configLoad()).toStrictEqual({
       env: 'test',
       timeout: { shutdownSeconds: 30 },
-      http: { host: '127.0.0.1', port: 10100 },
+      http: { host: '127.0.0.1', port: 0 },
       logger: { level: 'silly', format: 'text' }
     });
   });
@@ -46,7 +46,7 @@ describe('Test build http config', () => {
   it('should build valid http config from a test.yaml', () => {
     expect(buildHttpConfig(configLoad())).toStrictEqual({
       host: '127.0.0.1',
-      port: 10100
+      port: 0
     });
   });
 });
