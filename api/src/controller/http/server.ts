@@ -21,6 +21,7 @@ export class HttpServer {
   public start = (): Promise<void> => {
     return new Promise((resolve) => {
       const app = express();
+      app.disable('x-powered-by');
       app.use(requestIp.mw());
       app.use(this.middleware.accessLog);
       app.use('/api', this.getRouters());
