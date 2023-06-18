@@ -1,5 +1,12 @@
 import { NextFunction, Request, Response } from 'express';
+import 'express-async-errors';
 import { Logger } from 'winston';
+
+import {
+  CustomError,
+  InternalErrorType,
+  NotFoundErrorType
+} from '@controller/http/errors';
 
 export class Middleware {
   constructor(public logger: Logger) {}
@@ -24,5 +31,54 @@ export class Middleware {
     });
 
     next();
+  };
+
+  public handleError = (
+    err: Error,
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) => {
+    let customError: CustomError;
+    if (err instanceof CustomError) {
+      customError = err;
+    } else {
+      customError = new CustomError(
+        InternalErrorType.UNEXPECTED,
+        'Unexpected error happened'
+      );
+    }
+
+    this.respondError(customError, res);
+  };
+
+  public handleNotFoundRoute = (
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) => {
+    this.respondError(
+      new CustomError(
+        NotFoundErrorType.ROUTE_NOT_FOUND,
+        'No matching route found'
+      ),
+      res
+    );
+  };
+
+  private respondError = (error: CustomError, res: Response) => {
+    let statusCode = 500;
+    if (error.type in NotFoundErrorType) {
+      statusCode = 404;
+    } else if (error.type in InternalErrorType) {
+      statusCode = 500;
+    }
+
+    res.locals.error = error;
+    res.status(statusCode);
+    res.send({
+      type: error.type,
+      message: error.message
+    });
   };
 }
