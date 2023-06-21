@@ -44,7 +44,6 @@
         "express": "^4.18.2",
         "express-async-errors": "^3.1.1",
         "js-yaml": "^4.1.0",
-        "request-ip": "^3.3.0",
         "rimraf": "^5.0.0",
         "tsc-alias": "^1.8.5",
         "tsconfig-paths": "^4.2.0",
