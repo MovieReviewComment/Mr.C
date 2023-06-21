@@ -18,7 +18,7 @@ export class Middleware {
       this.logger.http('Access log', {
         method: req.method,
         url: req.originalUrl,
-        addr: req.clientIp,
+        addr: req.ip,
         proto: `${req.protocol}/${req.httpVersion}`,
         contentLength: req.headers['content-length'],
         userAgent: req.headers['user-agent'],
