@@ -22,7 +22,7 @@ export class HttpServer {
     return new Promise((resolve) => {
       const app = express();
       app.disable('x-powered-by');
-      app.use(requestIp.mw());
+      app.set('trust proxy', 0);
       app.use(this.middleware.accessLog);
       app.use('/api', this.getRouters());
       app.use(this.middleware.handleError);
