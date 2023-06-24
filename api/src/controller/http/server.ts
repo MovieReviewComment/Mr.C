@@ -1,9 +1,9 @@
 import express from 'express';
 import http from 'http';
-import requestIp from 'request-ip';
 import { Logger } from 'winston';
 
 import { DevV1Controller } from '@controller/http/dev/dev.v1.controller';
+import { HealthController } from '@controller/http/health/health.controller';
 import { Middleware } from '@controller/http/middleware';
 import { HttpConfig } from '@controller/http/types';
 
@@ -23,8 +23,9 @@ export class HttpServer {
       const app = express();
       app.disable('x-powered-by');
       app.set('trust proxy', 0);
-      app.use(this.middleware.accessLog);
-      app.use('/api', this.getRouters());
+      app.use('/api', this.middleware.accessLog);
+      app.use('/api', this.getApiRouters());
+      app.use('/healthz', this.getHealthRouters());
       app.use(this.middleware.handleError);
       app.use(this.middleware.handleNotFoundRoute);
 
@@ -48,8 +49,13 @@ export class HttpServer {
     });
   };
 
-  private getRouters = (): express.Router[] => {
+  private getApiRouters = (): express.Router[] => {
     const routers = [new DevV1Controller(this.logger).routes()];
+    return routers;
+  };
+
+  private getHealthRouters = (): express.Router[] => {
+    const routers = [new HealthController().routes()];
     return routers;
   };
 }
