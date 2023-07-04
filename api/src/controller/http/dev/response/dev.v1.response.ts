@@ -1,5 +1,3 @@
-import { Response } from 'express';
-
-export type GreetingV1Response = Response & {
+export interface GreetingV1Response {
   message?: string;
-};
+}
