@@ -1,0 +1,143 @@
+{
+  "info": {
+    "title": "Mr.C API",
+    "version": "1.0.0"
+  },
+  "openapi": "3.0.3",
+  "paths": {
+    "/api/v1/dev/greeting": {
+      "post": {
+        "operationId": "DevApiSpec_post_/greeting",
+        "tags": [
+          "Development"
+        ],
+        "summary": "Greeting",
+        "security": [
+          {
+            "jwt": []
+          }
+        ],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "message": {
+                    "type": "string"
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GreetingV1Response"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/healthz/liveness": {
+      "get": {
+        "operationId": "HealthApiSpec_get_/liveness",
+        "tags": [
+          "Health Checks"
+        ],
+        "summary": "Check for liveness",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "message"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "GreetingV1Response": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "qs.ParsedQs": {
+        "type": "object",
+        "additionalProperties": {
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "$ref": "#/components/schemas/qs.ParsedQs"
+            },
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/qs.ParsedQs"
+              }
+            },
+            {
+              "type": "string"
+            }
+          ]
+        }
+      },
+      "GreetingV1Request": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ParamsDictionary": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        }
+      }
+    },
+    "securitySchemes": {
+      "jwt": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}

@@ -45,6 +45,7 @@ describe('Test build logger config', () => {
 describe('Test build http config', () => {
   it('should build valid http config from a test.yaml', () => {
     expect(buildHttpConfig(configLoad())).toStrictEqual({
+      env: 'test',
       host: '127.0.0.1',
       port: 0
     });
