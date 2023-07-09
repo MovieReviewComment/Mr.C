@@ -19,7 +19,6 @@
     "author": "skgndi12",
     "license": "MIT",
     "devDependencies": {
-        "@openapi-contrib/json-schema-to-openapi-schema": "^2.2.5",
         "@trivago/prettier-plugin-sort-imports": "^4.1.1",
         "@types/config": "^3.3.0",
         "@types/convict-format-with-validator": "^6.0.2",
@@ -69,6 +68,7 @@
         },
         "rootDir": ".",
         "moduleNameMapper": {
+            "^@root(.*)$": "<rootDir>/$1",
             "^@src(.*)$": "<rootDir>/src/$1",
             "^@controller(.*)$": "<rootDir>/src/controller/$1"
         },

@@ -16,7 +16,9 @@
     "noImplicitAny": true,
     "skipLibCheck": true,
     "sourceMap": true,
+    "resolveJsonModule": true,
     "paths": {
+      "@root/*": ["./*"],
       "@src/*": ["src/*"],
       "@controller/*": ["src/controller/*"]
     }
