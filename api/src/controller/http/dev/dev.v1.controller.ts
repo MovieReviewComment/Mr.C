@@ -1,4 +1,4 @@
-import { Router } from 'express';
+import { Request, Response, Router } from 'express';
 import { Logger } from 'winston';
 
 import { GreetingV1Request } from '@controller/http/dev/request/dev.v1.request';
@@ -8,7 +8,7 @@ import { methodNotAllowed } from '@controller/http/handler';
 export class DevV1Controller {
   constructor(public logger: Logger) {}
 
-  routes(): Router {
+  public routes = (): Router => {
     const router: Router = Router();
     const prefix = '/v1/dev';
 
@@ -16,12 +16,13 @@ export class DevV1Controller {
       .route(`${prefix}/greeting`)
       .post(this.greeting)
       .all(methodNotAllowed);
-    return router;
-  }
 
-  private greeting = async (
-    req: GreetingV1Request,
-    res: GreetingV1Response
+    return router;
+  };
+
+  public greeting = async (
+    req: Request<any, any, GreetingV1Request>,
+    res: Response<GreetingV1Response>
   ) => {
     res.send({ message: 'Hello World!' });
   };

@@ -1,5 +1,3 @@
-import { Request } from 'express';
-
-export type GreetingV1Request = Request & {
+export interface GreetingV1Request {
   message?: string;
-};
+}

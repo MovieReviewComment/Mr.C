@@ -32,6 +32,7 @@ export function buildLoggerConfig(config: Config): LoggerConfig {
 
 export function buildHttpConfig(config: Config): HttpConfig {
   return {
+    env: config.env,
     host: config.http.host,
     port: config.http.port
   };
